@@ -29,16 +29,37 @@ idea and object model but modernizes it with:
 - Java 21
 - Swing (JPanel) for the GUI
 - MySQL (local database)
-- JDBC (MySQL Connector/J)
+- JDBC (MySQL Connector/J — included in `lib/`)
 - NetBeans + Ant (project build)
 
-## Requirements
+---
 
-- JDK 21
-- MySQL Server running locally
-- A database named `system_gym` with the `exercises` table
+## Getting started (for collaborators)
 
-## Database setup
+Follow these steps to clone the repository and run it on your own machine so you
+can contribute.
+
+### 1. Prerequisites
+
+Make sure you have installed:
+
+- **JDK 21**
+- **NetBeans** (with Java support)
+- **MySQL Server** running locally
+
+> The MySQL Connector/J driver is already included in the `lib/` folder, so you
+> do **not** need to download it separately.
+
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/deyby01/<repo-name>.git
+cd <repo-name>
+```
+
+### 3. Create the database and table
+
+Open a MySQL session and run:
 
 ```sql
 CREATE DATABASE system_gym;
@@ -55,14 +76,69 @@ CREATE TABLE exercises (
 );
 ```
 
-Update the connection credentials in `src/system_gym/Conection.java` to match
-your local MySQL user and password.
+### 4. Create the database user
 
-## How to run
+The application connects with a dedicated MySQL user (not `root`). Create the
+same user the project expects so the connection works out of the box:
 
-1. Open the project in NetBeans.
-2. Make sure the MySQL server is running.
-3. Run the project (`System_gym.java` is the main class).
+```sql
+CREATE USER 'gym_user'@'localhost' IDENTIFIED BY 'Gym_2024!';
+GRANT ALL PRIVILEGES ON system_gym.* TO 'gym_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+> If your MySQL uses a different host, port, user or password, update the values
+> in `src/system_gym/Conection.java` accordingly:
+>
+> ```java
+> String bd = "system_gym";
+> String url = "jdbc:mysql://localhost:3306/";
+> String user = "gym_user";
+> String password = "Gym_2024!";
+> ```
+
+### 5. Open and run in NetBeans
+
+1. In NetBeans: **File > Open Project** and select the cloned folder.
+2. Make sure the **MySQL server is running**.
+3. Run the project — the main class is `system_gym.System_gym`.
+4. On startup it tests the database connection. If everything is set up correctly
+   you should see in the Output window:
+   ```
+   Se conecto a la bd: system_gym
+   ```
+
+If you see `Access denied` or `Communications link failure`, double-check that
+MySQL is running and that the user/password from step 4 match
+`Conection.java`.
+
+---
+
+## Project structure
+
+```
+system_gym/
+├── lib/                         # MySQL Connector/J driver (.jar)
+├── src/system_gym/
+│   ├── System_gym.java          # Main class (entry point)
+│   ├── Conection.java           # MySQL connection (JDBC)
+│   ├── Menu.java / Menu.form    # Swing panel (GUI)
+│   └── ...                      # Model and DAO classes (in progress)
+└── nbproject/                   # NetBeans/Ant project configuration
+```
+
+## How to contribute
+
+1. Make sure you can run the project locally (steps above).
+2. Create a branch for your changes:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your work and push the branch:
+   ```bash
+   git push -u origin feature/your-feature-name
+   ```
+4. Open a Pull Request on GitHub for review.
 
 ## Authors
 
