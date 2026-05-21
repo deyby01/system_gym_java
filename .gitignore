@@ -1,0 +1,14 @@
+# Salida compilada de NetBeans/Ant (se regenera, no se sube)
+/build/
+/dist/
+
+# Configuracion local del usuario (rutas de tu PC, no sirve a otros)
+/nbproject/private/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs y temporales
+*.log
+*~
