@@ -9,29 +9,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conection {
-    String bd = "system_gym";
+    String dbName = "system_gym";
     String url = "jdbc:mysql://localhost:3306/";
     String user = "gym_user";
     String password = "Gym_2024!";
     String driver = "com.mysql.cj.jdbc.Driver";
     Connection con;
     public Conection(){ }
-    
-    public Connection conectar(){
+
+    public Connection connect(){
      try{
        Class.forName(driver);
-       con = DriverManager.getConnection(url+bd,user,password);
-       System.out.println("Se conecto a la bd: "+bd);
+       con = DriverManager.getConnection(url+dbName,user,password);
+       System.out.println("Connected to database: "+dbName);
      }catch(ClassNotFoundException |SQLException ex){
-       System.out.println("No se conecto a la bd: "+bd);
+       System.out.println("Failed to connect to database: "+dbName);
        System.out.println(ex);
-     }  
+     }
      return con;
     }
-    public void desconectar(){
+    public void disconnect(){
      try{
          con.close();
-     }catch(SQLException ex){ }    
+     }catch(SQLException ex){ }
     }
     
 }  

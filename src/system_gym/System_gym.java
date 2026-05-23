@@ -14,8 +14,8 @@ public class System_gym {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Conection conexion = new Conection();
-        conexion.conectar();
+        Menu user = new Menu();
+        user.setVisible(true);
     }
     
 }
