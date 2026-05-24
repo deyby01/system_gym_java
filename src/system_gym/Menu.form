@@ -26,13 +26,16 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="285" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton1" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="258" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="jButton5" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="jButton6" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="CreateButton" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="UpdateButton" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="DeleteButton" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="ShowDetailButton" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="SearchButton" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="GenerateRoutineButton" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="258" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
           </Group>
@@ -41,21 +44,21 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="76" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="CreateButton" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="UpdateButton" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="DeleteButton" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="ShowDetailButton" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton5" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="SearchButton" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton6" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace pref="75" max="32767" attributes="0"/>
+              <Component id="GenerateRoutineButton" min="-2" pref="69" max="-2" attributes="0"/>
+              <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,32 +72,35 @@
         <Property name="text" type="java.lang.String" value="Main Menu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="CreateButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Exercise"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="UpdateButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update Exercise"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="DeleteButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete Exercise"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="ShowDetailButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show Exercise Detail"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="SearchButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search Exercise by Level"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="GenerateRoutineButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Generate Routine"/>
       </Properties>

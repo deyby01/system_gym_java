@@ -17,7 +17,7 @@ public class ExerciseDAO {
     }
     
     public boolean createExercise(Exercise e) {
-        String sql = "INSERT INTO exercise(name, type, intensity_level, estimated_time, description, last_used) VALUES('"+ e.getName() +"', '"+ e.getType() +"', '"+ e.getIntensityLevel() +"', "+ e.getEstimatedTime() +", '"+ e.getDescription() +"', "+ e.getLastUsed() +")";
+        String sql = "INSERT INTO exercises(name, type, intensity_level, estimated_time, description, last_used) VALUES('"+ e.getName() +"', '"+ e.getType() +"', '"+ e.getIntensityLevel() +"', "+ e.getEstimatedTime() +", '"+ e.getDescription() +"', "+ e.getLastUsed() +")";
 
         try {
             conect = con_db.connect();

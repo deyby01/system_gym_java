@@ -12,8 +12,8 @@ idea and object model but modernizes it with:
 
 - **Java** as the main language, preserving the object-oriented design
   (an `Exercise` base class with `Strength` and `Cardio` subclasses).
-- **Swing (JPanel)** for the graphical interface, replacing the old console menu
-  with visual panels and user interaction.
+- **Swing (JFrame)** for the graphical interface, replacing the old console menu
+  with visual windows and user interaction.
 - **MySQL** as a local database, replacing the in-memory list so the data is
   stored permanently.
 - **JDBC** to connect the Java application to the MySQL database.
@@ -27,7 +27,7 @@ idea and object model but modernizes it with:
 ## Tech stack
 
 - Java 21
-- Swing (JPanel) for the GUI
+- Swing (JFrame) for the GUI
 - MySQL (local database)
 - JDBC (MySQL Connector/J — included in `lib/`)
 - NetBeans + Ant (project build)
@@ -53,7 +53,7 @@ Make sure you have installed:
 ### 2. Clone the repository
 
 ```bash
-git clone https://github.com/deyby01/<repo-name>.git
+git clone https://github.com/deyby01/system_gym_java.git
 cd <repo-name>
 ```
 
@@ -67,12 +67,12 @@ USE system_gym;
 
 CREATE TABLE exercises (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
+    name VARCHAR(100) NOT NULL,
     type VARCHAR(20),
     intensity_level VARCHAR(20),
     estimated_time DECIMAL(5,2),
     description TEXT,
-    last_used INT
+    last_used INT DEFAULT 0
 );
 ```
 
@@ -91,7 +91,7 @@ FLUSH PRIVILEGES;
 > in `src/system_gym/Conection.java` accordingly:
 >
 > ```java
-> String bd = "system_gym";
+> String dbName = "system_gym";
 > String url = "jdbc:mysql://localhost:3306/";
 > String user = "gym_user";
 > String password = "Gym_2024!";
@@ -105,7 +105,7 @@ FLUSH PRIVILEGES;
 4. On startup it tests the database connection. If everything is set up correctly
    you should see in the Output window:
    ```
-   Se conecto a la bd: system_gym
+   Connected to database: system_gym
    ```
 
 If you see `Access denied` or `Communications link failure`, double-check that

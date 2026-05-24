@@ -13,5 +13,9 @@ public class Cardio extends Exercise{
     public Cardio(int id, String name, String intensityLevel, double estimatedTime, String description, int lastUsed) {
         super(id, name, "Cardio", intensityLevel, estimatedTime, description, lastUsed);
     }
+
+    public Cardio(String name, String intensityLevel, double estimatedTime, String description, int lastUsed) {
+        super(name, "Cardio", intensityLevel, estimatedTime, description, lastUsed);
+    }
     
 }

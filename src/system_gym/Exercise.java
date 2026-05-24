@@ -27,6 +27,15 @@ public class Exercise {
         this.lastUsed = lastUsed;
     }
 
+    public Exercise(String name, String type, String intensityLevel, double estimatedTime, String description, int lastUsed) {
+        this.name = name;
+        this.type = type;
+        this.intensityLevel = intensityLevel;
+        this.estimatedTime = estimatedTime;
+        this.description = description;
+        this.lastUsed = lastUsed;
+    }
+
     public int getId() {
         return id;
     }

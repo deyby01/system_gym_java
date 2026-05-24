@@ -13,5 +13,9 @@ public class Strength extends Exercise{
     public Strength(int id, String name, String intensityLevel, double estimatedTime, String description, int lastUsed) {
         super(id, name, "Strength", intensityLevel, estimatedTime, description, lastUsed);
     }
+
+    public Strength(String name, String intensityLevel, double estimatedTime, String description, int lastUsed) {
+        super(name, "Strength", intensityLevel, estimatedTime, description, lastUsed);
+    }
     
 }
