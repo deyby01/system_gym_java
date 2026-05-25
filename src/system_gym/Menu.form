@@ -23,42 +23,76 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="285" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace pref="247" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="CreateButton" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="UpdateButton" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="DeleteButton" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="ShowDetailButton" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="SearchButton" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Component id="GenerateRoutineButton" min="-2" pref="319" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="258" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="SearchButton" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="DeleteButton" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="CreateButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="ShowDetailButton" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
+                      <Component id="UpdateButton" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="GenerateRoutineButton" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="LogoLabel" min="-2" pref="94" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" pref="194" max="-2" attributes="0"/>
+                  <Component id="LogoGym" min="-2" pref="181" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="76" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="CreateButton" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="UpdateButton" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="DeleteButton" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="ShowDetailButton" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="SearchButton" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="GenerateRoutineButton" min="-2" pref="69" max="-2" attributes="0"/>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="LogoLabel" min="-2" pref="94" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LogoGym" min="-2" pref="116" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="58" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="UpdateButton" min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="ShowDetailButton" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="GenerateRoutineButton" min="-2" pref="49" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="CreateButton" min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="DeleteButton" min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="SearchButton" min="-2" pref="54" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="269" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,13 +101,16 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Sans" size="36" style="1"/>
+          <Font name="Bitstream Charter" size="36" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Main Menu"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="CreateButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Create Exercise"/>
       </Properties>
       <Events>
@@ -82,28 +119,47 @@
     </Component>
     <Component class="javax.swing.JButton" name="UpdateButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="12" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Update Exercise"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="DeleteButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="15" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete Exercise"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="ShowDetailButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="15" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Show Exercise Detail"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="SearchButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="15" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Search Exercise by Level"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="GenerateRoutineButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="15" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Generate Routine"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LogoLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LogoGym">
     </Component>
   </SubComponents>
 </Form>
