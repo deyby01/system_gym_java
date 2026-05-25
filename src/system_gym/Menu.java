@@ -60,6 +60,7 @@ public class Menu extends javax.swing.JFrame {
 
         UpdateButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         UpdateButton.setText("Update Exercise");
+        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
 
         DeleteButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         DeleteButton.setText("Delete Exercise");
@@ -140,6 +141,7 @@ public class Menu extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
 
+
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
         if (input == null || input.trim().isEmpty()) return;
@@ -194,6 +196,11 @@ public class Menu extends javax.swing.JFrame {
             System.out.println("Image not found: /img/" + fileName);
         }
     }
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateButtonActionPerformed
+
 
     /**
      * @param args the command line arguments
