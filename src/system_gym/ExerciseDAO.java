@@ -48,6 +48,40 @@ public class ExerciseDAO {
     }
     
     /**
+     * Retrieves a single exercise from the database by its id.
+     *
+     * @param id The id of the exercise to retrieve.
+     * @return The Exercise object if found, or null if it does not exist.
+     */
+    public Exercise getExerciseById(int id) {
+        String sql = "SELECT * FROM exercises WHERE id=" + id;
+
+        try {
+            conect = con_db.connect();
+            st = conect.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                String name = rs.getString("name");
+                String type = rs.getString("type");
+                String intensityLevel = rs.getString("intensity_level");
+                double estimatedTime = rs.getDouble("estimated_time");
+                String description = rs.getString("description");
+                int lastUsed = rs.getInt("last_used");
+                con_db.disconnect();
+                return new Exercise(id, name, type, intensityLevel, estimatedTime, description, lastUsed);
+            }
+
+            con_db.disconnect();
+
+        } catch (Exception err) {
+            System.out.println("Error fetching exercise by id: " + err);
+        }
+
+        return null;
+    }
+
+    /**
      * Updates an existing exercise in the database.
      * The exercise is identified by its id, which must be set in the object.
      *

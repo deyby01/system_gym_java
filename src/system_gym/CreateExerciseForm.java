@@ -14,16 +14,42 @@ public class CreateExerciseForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CreateExerciseForm.class.getName());
     
-    // Variables to remember selected value.
-    private String selectedType = "";
-    private String selectedLevel = "";
+    private Exercise exerciseToEdit = null;
 
     /**
-     * Creates new form CreateExerciseForm
+     * Opens the form in CREATE mode.
      */
     public CreateExerciseForm() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    /**
+     * Opens the form in UPDATE mode with fields pre-filled from the given exercise.
+     *
+     * @param e The exercise to edit.
+     */
+    public CreateExerciseForm(Exercise e) {
+        initComponents();
+        setLocationRelativeTo(null);
+
+        exerciseToEdit = e;
+
+        jLabel1.setText("Update Exercise");
+        SaveButton.setText("Update");
+        NameField.setText(e.getName());
+        EstimatedField.setText(String.valueOf(e.getEstimatedTime()));
+        DescriptionField.setText(e.getDescription());
+
+        if (e.getType().equals("Strength")) StrengthOption.setSelected(true);
+        else CardioOption.setSelected(true);
+
+        switch (e.getIntensityLevel()) {
+            case "Beginner"        -> BeginnerOption.setSelected(true);
+            case "Intermediate"    -> IntermediateOption.setSelected(true);
+            case "Advanced"        -> AdvancedOption.setSelected(true);
+            case "High Performance"-> HighOption.setSelected(true);
+        }
     }
 
     /**
@@ -35,15 +61,11 @@ public class CreateExerciseForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TypeGroup = new javax.swing.ButtonGroup();
+        LevelGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        StrengthType = new javax.swing.JButton();
-        CardioType = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        BeginnerLevel = new javax.swing.JButton();
-        IntermediateLevel = new javax.swing.JButton();
-        AdvancedLevel = new javax.swing.JButton();
-        HighLevel = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -51,6 +73,12 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         EstimatedField = new javax.swing.JTextField();
         NameField = new javax.swing.JTextField();
         SaveButton = new javax.swing.JButton();
+        StrengthOption = new javax.swing.JRadioButton();
+        CardioOption = new javax.swing.JRadioButton();
+        IntermediateOption = new javax.swing.JRadioButton();
+        BeginnerOption = new javax.swing.JRadioButton();
+        AdvancedOption = new javax.swing.JRadioButton();
+        HighOption = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,26 +88,8 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel2.setText("Type of Exercise: ");
 
-        StrengthType.setText("Strength");
-        StrengthType.addActionListener(this::StrengthTypeActionPerformed);
-
-        CardioType.setText("Cardio");
-        CardioType.addActionListener(this::CardioTypeActionPerformed);
-
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setText("Level of Exercise:");
-
-        BeginnerLevel.setText("Beginner");
-        BeginnerLevel.addActionListener(this::BeginnerLevelActionPerformed);
-
-        IntermediateLevel.setText("Intermediate");
-        IntermediateLevel.addActionListener(this::IntermediateLevelActionPerformed);
-
-        AdvancedLevel.setText("Advanced");
-        AdvancedLevel.addActionListener(this::AdvancedLevelActionPerformed);
-
-        HighLevel.setText("High Performance");
-        HighLevel.addActionListener(this::HighLevelActionPerformed);
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel4.setText("Name:");
@@ -94,54 +104,72 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         SaveButton.setText("Save");
         SaveButton.addActionListener(this::SaveButtonActionPerformed);
 
+        TypeGroup.add(StrengthOption);
+        StrengthOption.setText("Strength");
+
+        TypeGroup.add(CardioOption);
+        CardioOption.setText("Cardio");
+
+        LevelGroup.add(IntermediateOption);
+        IntermediateOption.setText("Intermediate");
+
+        LevelGroup.add(BeginnerOption);
+        BeginnerOption.setText("Beginner");
+
+        LevelGroup.add(AdvancedOption);
+        AdvancedOption.setText("Advanced");
+
+        LevelGroup.add(HighOption);
+        HighOption.setText("High Performance");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(StrengthType, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(CardioType, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BeginnerLevel)
-                                .addGap(31, 31, 31)
-                                .addComponent(IntermediateLevel)
-                                .addGap(18, 18, 18)
-                                .addComponent(AdvancedLevel)
-                                .addGap(18, 18, 18)
-                                .addComponent(HighLevel))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(44, 44, 44)
-                                .addComponent(DescriptionField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NameField)
-                                    .addComponent(EstimatedField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))))
-                .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(268, 268, 268))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(268, 268, 268))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(368, 368, 368))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(EstimatedField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(658, 658, 658))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(StrengthOption)
+                                .addGap(66, 66, 66)
+                                .addComponent(CardioOption))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BeginnerOption)
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(IntermediateOption)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(AdvancedOption)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(HighOption)))))
+                        .addGap(132, 132, 132))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(419, 572, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,65 +177,48 @@ public class CreateExerciseForm extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StrengthType, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CardioType, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BeginnerLevel)
-                    .addComponent(IntermediateLevel)
-                    .addComponent(AdvancedLevel)
-                    .addComponent(HighLevel))
-                .addGap(63, 63, 63)
+                    .addComponent(jLabel2)
+                    .addComponent(StrengthOption)
+                    .addComponent(CardioOption))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 76, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BeginnerOption)
+                            .addComponent(IntermediateOption)
+                            .addComponent(AdvancedOption)
+                            .addComponent(HighOption))
+                        .addGap(60, 60, 60)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(EstimatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(DescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(EstimatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(190, 190, 190))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void StrengthTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StrengthTypeActionPerformed
-        selectedType = "Strength";
-    }//GEN-LAST:event_StrengthTypeActionPerformed
-
-    private void CardioTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CardioTypeActionPerformed
-        selectedType = "Cardio";
-    }//GEN-LAST:event_CardioTypeActionPerformed
-
-    private void BeginnerLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeginnerLevelActionPerformed
-        selectedLevel = "Beginner";
-    }//GEN-LAST:event_BeginnerLevelActionPerformed
-
-    private void IntermediateLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IntermediateLevelActionPerformed
-        selectedLevel = "Intermediate";
-    }//GEN-LAST:event_IntermediateLevelActionPerformed
-
-    private void AdvancedLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdvancedLevelActionPerformed
-        selectedLevel = "Advanced";
-    }//GEN-LAST:event_AdvancedLevelActionPerformed
-
-    private void HighLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HighLevelActionPerformed
-        selectedLevel = "High Performance";
-    }//GEN-LAST:event_HighLevelActionPerformed
-
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-        if (selectedType.isEmpty() || selectedLevel.isEmpty()) {
+        boolean noTypeSelected  = !StrengthOption.isSelected() && !CardioOption.isSelected();
+        boolean noLevelSelected = !BeginnerOption.isSelected() && !IntermediateOption.isSelected()
+                               && !AdvancedOption.isSelected() && !HighOption.isSelected();
+
+        if (noTypeSelected || noLevelSelected) {
             JOptionPane.showMessageDialog(null, "Please select a type and a level.");
             return;
         }
@@ -228,6 +239,13 @@ public class CreateExerciseForm extends javax.swing.JFrame {
 
         String description = DescriptionField.getText().trim();
 
+        String selectedType  = StrengthOption.isSelected() ? "Strength" : "Cardio";
+        String selectedLevel;
+        if      (BeginnerOption.isSelected())     selectedLevel = "Beginner";
+        else if (IntermediateOption.isSelected())  selectedLevel = "Intermediate";
+        else if (AdvancedOption.isSelected())      selectedLevel = "Advanced";
+        else                                       selectedLevel = "High Performance";
+
         Exercise exercise;
         if (selectedType.equals("Strength")) {
             exercise = new Strength(name, selectedLevel, estimatedTime, description, 0);
@@ -236,10 +254,18 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         }
 
         ExerciseDAO dao = new ExerciseDAO();
-        boolean success = dao.createExercise(exercise);
+        boolean success;
+
+        if (exerciseToEdit == null) {
+            success = dao.createExercise(exercise);
+        } else {
+            exercise.setId(exerciseToEdit.getId());
+            success = dao.updateExercise(exercise);
+        }
 
         if (success) {
-            JOptionPane.showMessageDialog(null, "Exercise created successfully!");
+            String msg = (exerciseToEdit == null) ? "Exercise created successfully!" : "Exercise updated successfully!";
+            JOptionPane.showMessageDialog(null, msg);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error: could not save the exercise.");
@@ -273,16 +299,18 @@ public class CreateExerciseForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdvancedLevel;
-    private javax.swing.JButton BeginnerLevel;
-    private javax.swing.JButton CardioType;
+    private javax.swing.JRadioButton AdvancedOption;
+    private javax.swing.JRadioButton BeginnerOption;
+    private javax.swing.JRadioButton CardioOption;
     private javax.swing.JTextField DescriptionField;
     private javax.swing.JTextField EstimatedField;
-    private javax.swing.JButton HighLevel;
-    private javax.swing.JButton IntermediateLevel;
+    private javax.swing.JRadioButton HighOption;
+    private javax.swing.JRadioButton IntermediateOption;
+    private javax.swing.ButtonGroup LevelGroup;
     private javax.swing.JTextField NameField;
     private javax.swing.JButton SaveButton;
-    private javax.swing.JButton StrengthType;
+    private javax.swing.JRadioButton StrengthOption;
+    private javax.swing.ButtonGroup TypeGroup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

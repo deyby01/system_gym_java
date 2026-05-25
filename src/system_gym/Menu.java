@@ -4,6 +4,8 @@
  */
 package system_gym;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author deyby-dev
@@ -18,6 +20,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
+        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
     }
 
     /**
@@ -100,6 +103,28 @@ public class Menu extends javax.swing.JFrame {
         CreateExerciseForm form = new CreateExerciseForm();
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
+        if (input == null || input.trim().isEmpty()) return;
+
+        try {
+            int id = Integer.parseInt(input.trim());
+            ExerciseDAO dao = new ExerciseDAO();
+            Exercise exercise = dao.getExerciseById(id);
+
+            if (exercise == null) {
+                JOptionPane.showMessageDialog(null, "Exercise not found.");
+                return;
+            }
+
+            CreateExerciseForm form = new CreateExerciseForm(exercise);
+            form.setVisible(true);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID must be a number.");
+        }
+    }
 
     /**
      * @param args the command line arguments
