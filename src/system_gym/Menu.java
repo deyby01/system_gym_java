@@ -21,6 +21,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
+        SearchButton.addActionListener(this::SearchButtonActionPerformed);
     }
 
     /**
@@ -55,7 +56,6 @@ public class Menu extends javax.swing.JFrame {
         ShowDetailButton.setText("Show Exercise Detail");
 
         SearchButton.setText("Search Exercise by Level");
-        SearchButton.addActionListener(this::SearchButtonActionPerformed);
 
         GenerateRoutineButton.setText("Generate Routine");
 
@@ -100,15 +100,12 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
         CreateExerciseForm form = new CreateExerciseForm();
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
-
-    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
-        SearchExerciseByLevelForm form = new SearchExerciseByLevelForm();
-        form.setVisible(true);
-    }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
@@ -130,6 +127,11 @@ public class Menu extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "ID must be a number.");
         }
+    }
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        SearchExerciseByLevelForm form = new SearchExerciseByLevelForm();
+        form.setVisible(true);
     }
 
     /**
