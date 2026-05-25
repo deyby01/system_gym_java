@@ -55,6 +55,7 @@ public class Menu extends javax.swing.JFrame {
         ShowDetailButton.setText("Show Exercise Detail");
 
         SearchButton.setText("Search Exercise by Level");
+        SearchButton.addActionListener(this::SearchButtonActionPerformed);
 
         GenerateRoutineButton.setText("Generate Routine");
 
@@ -103,6 +104,11 @@ public class Menu extends javax.swing.JFrame {
         CreateExerciseForm form = new CreateExerciseForm();
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        SearchExerciseByLevelForm form = new SearchExerciseByLevelForm();
+        form.setVisible(true);
+    }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
