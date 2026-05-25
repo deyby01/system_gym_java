@@ -27,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
         setImageLabel(LogoGym, "LogoSystemGym.png", 181, 116);
         setLocationRelativeTo(null);
         UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
+        ShowDetailButton.addActionListener(this::ShowDetailButtonActionPerformed);
     }
 
     /**
@@ -162,6 +163,28 @@ public class Menu extends javax.swing.JFrame {
         }
     }
     
+    private void ShowDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to view:");
+        if (input == null || input.trim().isEmpty()) return;
+
+        try {
+            int id = Integer.parseInt(input.trim());
+            ExerciseDAO dao = new ExerciseDAO();
+            Exercise exercise = dao.getExerciseById(id);
+
+            if (exercise == null) {
+                JOptionPane.showMessageDialog(null, "Exercise not found.");
+                return;
+            }
+
+            ShowExerciseDetailForm form = new ShowExerciseDetailForm(exercise);
+            form.setVisible(true);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID must be a number.");
+        }
+    }
+
     private void setImageLabel(JLabel label, String fileName, int width, int height) {
         java.net.URL url = getClass().getResource("/img/" + fileName);
         if (url != null) {
