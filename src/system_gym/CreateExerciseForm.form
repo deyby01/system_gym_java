@@ -59,16 +59,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="BeginnerOption" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SaveButton" min="-2" pref="139" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="IntermediateOption" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="AdvancedOption" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="HighOption" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="IntermediateOption" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="AdvancedOption" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="HighOption" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
@@ -86,6 +81,13 @@
                       <EmptySpace min="419" pref="572" max="32767" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="292" max="-2" attributes="0"/>
+              <Component id="SaveButton" min="-2" pref="139" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+              <Component id="Close" min="-2" pref="122" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -131,9 +133,12 @@
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="EstimatedField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="69" max="32767" attributes="0"/>
-              <Component id="SaveButton" min="-2" pref="49" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="Close" max="32767" attributes="0"/>
+                  <Component id="SaveButton" pref="49" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -196,7 +201,7 @@
     <Component class="javax.swing.JButton" name="SaveButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Sans" size="18" style="1"/>
+          <Font name="Liberation Sans" size="18" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
@@ -251,6 +256,17 @@
         </Property>
         <Property name="text" type="java.lang.String" value="High Performance"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Close">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Sans" size="18" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Close"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CloseActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

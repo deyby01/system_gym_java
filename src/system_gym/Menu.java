@@ -26,7 +26,6 @@ public class Menu extends javax.swing.JFrame {
         setImageLabel(LogoLabel, "UNAB_logo.png", 94, 94);
         setImageLabel(LogoGym, "LogoSystemGym.png", 181, 116);
         setLocationRelativeTo(null);
-        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
         ShowDetailButton.addActionListener(this::ShowDetailButtonActionPerformed);
     }
 
@@ -141,28 +140,6 @@ public class Menu extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
 
-
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
-        if (input == null || input.trim().isEmpty()) return;
-
-        try {
-            int id = Integer.parseInt(input.trim());
-            ExerciseDAO dao = new ExerciseDAO();
-            Exercise exercise = dao.getExerciseById(id);
-
-            if (exercise == null) {
-                JOptionPane.showMessageDialog(null, "Exercise not found.");
-                return;
-            }
-
-            CreateExerciseForm form = new CreateExerciseForm(exercise);
-            form.setVisible(true);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ID must be a number.");
-        }
-    }
     
     private void ShowDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to view:");
@@ -198,7 +175,25 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
-        // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
+        if (input == null || input.trim().isEmpty()) return;
+
+        try {
+            int id = Integer.parseInt(input.trim());
+            ExerciseDAO dao = new ExerciseDAO();
+            Exercise exercise = dao.getExerciseById(id);
+
+            if (exercise == null) {
+                JOptionPane.showMessageDialog(null, "Exercise not found.");
+                return;
+            }
+
+            CreateExerciseForm form = new CreateExerciseForm(exercise);
+            form.setVisible(true);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID must be a number.");
+        }
     }//GEN-LAST:event_UpdateButtonActionPerformed
 
 
