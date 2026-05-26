@@ -26,7 +26,7 @@ public class Menu extends javax.swing.JFrame {
         setImageLabel(LogoLabel, "UNAB_logo.png", 94, 94);
         setImageLabel(LogoGym, "LogoSystemGym.png", 181, 116);
         setLocationRelativeTo(null);
-        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
+        SearchButton.addActionListener(this::SearchButtonActionPerformed);
         DeleteButton.addActionListener(this::DeleteButtonActionPerformed);
         ShowDetailButton.addActionListener(this::ShowDetailButtonActionPerformed);
     }
@@ -138,6 +138,8 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
         CreateExerciseForm form = new CreateExerciseForm();
         form.setVisible(true);
@@ -225,6 +227,11 @@ public class Menu extends javax.swing.JFrame {
         gr.setVisible(true);
     }//GEN-LAST:event_GenerateRoutineButtonActionPerformed
 
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        SearchExerciseByLevelForm form = new SearchExerciseByLevelForm();
+        form.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
