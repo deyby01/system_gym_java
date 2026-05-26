@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package system_gym;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,6 +43,7 @@ public class GenerateRoutine extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
+        jOptionPane = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,25 +69,29 @@ public class GenerateRoutine extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setText("Number of exercises");
 
+        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jToggleButton1.setText("Generate");
         jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "#", "Exercise", "Type", "Est. Time", "Sets/Reps"
+                "#", "Exercise", "Type", "Est. Time"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         jToggleButton2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jToggleButton2.setText("Save");
+        jToggleButton2.setText("Finish");
         jToggleButton2.addActionListener(this::jToggleButton2ActionPerformed);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aaa.png"))); // NOI18N
@@ -102,30 +109,33 @@ public class GenerateRoutine extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jRadioButton2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jRadioButton3)
-                        .addGap(32, 32, 32)
-                        .addComponent(jRadioButton4)
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jToggleButton2)
-                            .addComponent(jToggleButton1))
-                        .addGap(37, 37, 37))))
+                .addGap(49, 49, 49)
+                .addComponent(jRadioButton2)
+                .addGap(67, 67, 67)
+                .addComponent(jRadioButton3)
+                .addGap(74, 74, 74)
+                .addComponent(jRadioButton4)
+                .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(194, 194, 194))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jToggleButton1)
+                            .addComponent(jToggleButton2))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jOptionPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(724, 724, 724))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,10 +159,13 @@ public class GenerateRoutine extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton1))
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jToggleButton2)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(jToggleButton2))
+                    .addComponent(jOptionPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -164,12 +177,66 @@ public class GenerateRoutine extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+
+    String level = "";
+
+    if (jRadioButton1.isSelected()) {
+        level = "Beginner";
+    }
+
+    if (jRadioButton2.isSelected()) {
+        level = "Intermediate";
+    }
+
+    if (jRadioButton3.isSelected()) {
+        level = "Advanced";
+    }
+
+    if (jRadioButton4.isSelected()) {
+        level = "High Performance";
+    }
+
+    int numExercises = Integer.parseInt(jTextField1.getText());
+
+    ExerciseDAO dao = new ExerciseDAO();
+
+    List<Exercise> routine = dao.generateRoutine(level, numExercises);
+
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    model.setRowCount(0);
+
+    double totalTime = 0;
+
+    int count = 1;
+
+    for (Exercise e : routine) {
+
+        model.addRow(new Object[]{
+            count,
+            e.getName(),
+            e.getType(),
+            e.getEstimatedTime()
+        });
+
+        totalTime = totalTime + e.getEstimatedTime();
+
+        count++;
+    }
+
+    javax.swing.JOptionPane.showMessageDialog(
+        this,
+        "Total routine time: " + totalTime + " min"
+    );
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+    System.exit(0);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +268,7 @@ public class GenerateRoutine extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JOptionPane jOptionPane;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;

@@ -211,7 +211,10 @@ public class ExerciseDAO {
                 routine.add(e);
 
                 String updateSql = "UPDATE exercises SET last_used=" + currentWeek + " WHERE id=" + id;
-                st.executeUpdate(updateSql);
+
+Statement updateSt = conect.createStatement();
+
+updateSt.executeUpdate(updateSql);
             }
 
             con_db.disconnect();
