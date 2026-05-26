@@ -54,7 +54,7 @@ Make sure you have installed:
 
 ```bash
 git clone https://github.com/deyby01/system_gym_java.git
-cd <repo-name>
+cd system_gym
 ```
 
 ### 3. Create the database and table
@@ -97,7 +97,24 @@ FLUSH PRIVILEGES;
 > String password = "Gym_2024!";
 > ```
 
-### 5. Open and run in NetBeans
+### 5. Load sample data (optional)
+
+To populate the database with 22 sample exercises for testing, run the fixture script:
+
+```bash
+mysql -u gym_user -p system_gym < sql/fixtures.sql
+```
+
+Or from inside a MySQL session:
+
+```sql
+source /path/to/project/sql/fixtures.sql
+```
+
+This inserts exercises of all types (Strength and Cardio) across all four intensity levels.
+All entries have `last_used = 0` so they are immediately available for routine generation.
+
+### 6. Open and run in NetBeans
 
 1. In NetBeans: **File > Open Project** and select the cloned folder.
 2. Make sure the **MySQL server is running**.
@@ -119,11 +136,13 @@ MySQL is running and that the user/password from step 4 match
 ```
 system_gym/
 ├── lib/                         # MySQL Connector/J driver (.jar)
+├── sql/
+│   └── fixtures.sql             # Sample data for testing (22 exercises)
 ├── src/system_gym/
 │   ├── System_gym.java          # Main class (entry point)
 │   ├── Conection.java           # MySQL connection (JDBC)
-│   ├── Menu.java / Menu.form    # Swing panel (GUI)
-│   └── ...                      # Model and DAO classes (in progress)
+│   ├── Menu.java / Menu.form    # Main menu (GUI)
+│   └── ...                      # Model, DAO and form classes
 └── nbproject/                   # NetBeans/Ant project configuration
 ```
 
