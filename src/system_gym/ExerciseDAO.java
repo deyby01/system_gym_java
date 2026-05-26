@@ -191,7 +191,7 @@ public class ExerciseDAO {
     public List<Exercise> generateRoutine(String level, int numExercises) {
         List<Exercise> routine = new ArrayList<>();
         int currentWeek = java.util.Calendar.getInstance().get(java.util.Calendar.WEEK_OF_YEAR);
-        String sql = "SELECT * FROM exercises WHERE intensity_level='" + level + "' AND last_used <= " + (currentWeek - 2) + " LIMIT " + numExercises;
+        String sql = "SELECT * FROM exercises WHERE intensity_level='" + level + "' AND last_used <= " + (currentWeek - 2) + " ORDER BY RAND() LIMIT " + numExercises;
 
         try {
             conect = con_db.connect();
@@ -211,7 +211,10 @@ public class ExerciseDAO {
                 routine.add(e);
 
                 String updateSql = "UPDATE exercises SET last_used=" + currentWeek + " WHERE id=" + id;
-                st.executeUpdate(updateSql);
+
+Statement updateSt = conect.createStatement();
+
+updateSt.executeUpdate(updateSql);
             }
 
             con_db.disconnect();
