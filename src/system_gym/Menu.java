@@ -27,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
         setImageLabel(LogoGym, "LogoSystemGym.png", 181, 116);
         setLocationRelativeTo(null);
         UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
+        DeleteButton.addActionListener(this::DeleteButtonActionPerformed);
         ShowDetailButton.addActionListener(this::ShowDetailButtonActionPerformed);
     }
 
@@ -186,6 +187,28 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to delete:");
+        if (input == null || input.trim().isEmpty()) return;
+
+        try {
+            int id = Integer.parseInt(input.trim());
+
+            ExerciseDAO dao = new ExerciseDAO();
+            Exercise exercise = new Exercise();
+            exercise.setId(id);
+
+            boolean success = dao.deleteExercise(exercise);
+            if (success) {
+                JOptionPane.showMessageDialog(null, "Exercise deleted successfully!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error deleting exercise.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID must be a number.");
+        }
+    }
+
     private void setImageLabel(JLabel label, String fileName, int width, int height) {
         java.net.URL url = getClass().getResource("/img/" + fileName);
         if (url != null) {
@@ -196,11 +219,6 @@ public class Menu extends javax.swing.JFrame {
             System.out.println("Image not found: /img/" + fileName);
         }
     }
-
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UpdateButtonActionPerformed
-
 
     /**
      * @param args the command line arguments
