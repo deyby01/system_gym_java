@@ -26,8 +26,8 @@ public class Menu extends javax.swing.JFrame {
         setImageLabel(LogoLabel, "UNAB_logo.png", 94, 94);
         setImageLabel(LogoGym, "LogoSystemGym.png", 181, 116);
         setLocationRelativeTo(null);
-        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
         SearchButton.addActionListener(this::SearchButtonActionPerformed);
+        ShowDetailButton.addActionListener(this::ShowDetailButtonActionPerformed);
     }
 
     /**
@@ -58,54 +58,53 @@ public class Menu extends javax.swing.JFrame {
         CreateButton.setText("Create Exercise");
         CreateButton.addActionListener(this::CreateButtonActionPerformed);
 
-        UpdateButton.setFont(new java.awt.Font("Liberation Sans", 3, 12)); // NOI18N
+        UpdateButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         UpdateButton.setText("Update Exercise");
+        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
 
-        DeleteButton.setFont(new java.awt.Font("Liberation Sans", 3, 15)); // NOI18N
+        DeleteButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         DeleteButton.setText("Delete Exercise");
 
-        ShowDetailButton.setFont(new java.awt.Font("Liberation Sans", 3, 15)); // NOI18N
+        ShowDetailButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         ShowDetailButton.setText("Show Exercise Detail");
 
-        SearchButton.setFont(new java.awt.Font("Liberation Sans", 3, 15)); // NOI18N
+        SearchButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         SearchButton.setText("Search Exercise by Level");
 
-        GenerateRoutineButton.setFont(new java.awt.Font("Liberation Sans", 3, 15)); // NOI18N
+        GenerateRoutineButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         GenerateRoutineButton.setText("Generate Routine");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(CreateButton)
-                            .addGap(28, 28, 28))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(ShowDetailButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(GenerateRoutineButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(342, 342, 342))
+            // Top section: logos and title
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(LogoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206)
+                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LogoGym, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            // Buttons: 2-column grid, centered with flexible gaps
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CreateButton,    javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeleteButton,    javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchButton,    javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UpdateButton,          javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowDetailButton,      javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GenerateRoutineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                // Logos row
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -114,23 +113,24 @@ public class Menu extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(LogoGym, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
+                // Title
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(ShowDetailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(GenerateRoutineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(CreateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                // Row 1: Create | Update
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CreateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                // Row 2: Delete | Show Detail
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteButton,     javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowDetailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                // Row 3: Search | Generate Routine
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SearchButton,          javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GenerateRoutineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,7 +143,41 @@ public class Menu extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
 
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    
+    private void ShowDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to view:");
+        if (input == null || input.trim().isEmpty()) return;
+
+        try {
+            int id = Integer.parseInt(input.trim());
+            ExerciseDAO dao = new ExerciseDAO();
+            Exercise exercise = dao.getExerciseById(id);
+
+            if (exercise == null) {
+                JOptionPane.showMessageDialog(null, "Exercise not found.");
+                return;
+            }
+
+            ShowExerciseDetailForm form = new ShowExerciseDetailForm(exercise);
+            form.setVisible(true);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID must be a number.");
+        }
+    }
+
+    private void setImageLabel(JLabel label, String fileName, int width, int height) {
+        java.net.URL url = getClass().getResource("/img/" + fileName);
+        if (url != null) {
+            ImageIcon icon = new ImageIcon(url);
+            Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            label.setIcon(new ImageIcon(img));
+        } else {
+            System.out.println("Image not found: /img/" + fileName);
+        }
+    }
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
         if (input == null || input.trim().isEmpty()) return;
 
@@ -163,18 +197,8 @@ public class Menu extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "ID must be a number.");
         }
-    }
-    
-    private void setImageLabel(JLabel label, String fileName, int width, int height) {
-        java.net.URL url = getClass().getResource("/img/" + fileName);
-        if (url != null) {
-            ImageIcon icon = new ImageIcon(url);
-            Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            label.setIcon(new ImageIcon(img));
-        } else {
-            System.out.println("Image not found: /img/" + fileName);
-        }
-    }
+    }//GEN-LAST:event_UpdateButtonActionPerformed
+
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         SearchExerciseByLevelForm form = new SearchExerciseByLevelForm();
