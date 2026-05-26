@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,8 +24,6 @@ public class SearchExerciseByLevelForm extends JFrame {
 
     private JComboBox<String> LevelCombo;
     private JButton SearchButton;
-    private JTextField IdField;
-    private JButton SearchByIdButton;
     private JLabel ImageLabel;
     private JTable ExerciseTable;
     private DefaultTableModel tableModel;
@@ -72,19 +69,12 @@ public class SearchExerciseByLevelForm extends JFrame {
         });
 
         SearchButton = new JButton("Search");
-        IdField = new JTextField(8);
-        SearchByIdButton = new JButton("Search by ID");
         styleButton(SearchButton);
-        styleButton(SearchByIdButton);
         LevelCombo.setPreferredSize(new Dimension(170, 32));
-        IdField.setPreferredSize(new Dimension(90, 32));
 
         topPanel.add(new JLabel("Level:"));
         topPanel.add(LevelCombo);
         topPanel.add(SearchButton);
-        topPanel.add(new JLabel("ID:"));
-        topPanel.add(IdField);
-        topPanel.add(SearchByIdButton);
 
         mainPanel.add(topPanel, BorderLayout.NORTH);
 
@@ -116,7 +106,6 @@ public class SearchExerciseByLevelForm extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
 
         SearchButton.addActionListener(this::SearchButtonActionPerformed);
-        SearchByIdButton.addActionListener(this::SearchByIdButtonActionPerformed);
     }
 
     private void styleButton(JButton button) {
@@ -141,34 +130,6 @@ public class SearchExerciseByLevelForm extends JFrame {
 
         if (exercises.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No exercises found for level: " + level);
-        }
-    }
-
-    private void SearchByIdButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        tableModel.setRowCount(0);
-
-        String idText = IdField.getText().trim();
-
-        if (idText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter an exercise ID.");
-            return;
-        }
-
-        try {
-            int id = Integer.parseInt(idText);
-
-            ExerciseDAO dao = new ExerciseDAO();
-            Exercise exercise = dao.getExerciseById(id);
-
-            if (exercise == null) {
-                JOptionPane.showMessageDialog(this, "No exercise found with ID: " + id);
-                return;
-            }
-
-            addExerciseToTable(exercise);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "ID must be a number.");
         }
     }
 
