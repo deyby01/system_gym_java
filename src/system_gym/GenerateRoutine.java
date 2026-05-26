@@ -30,6 +30,7 @@ public class GenerateRoutine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ExerciseLevel = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -53,16 +54,20 @@ public class GenerateRoutine extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel2.setText("Select your level");
 
+        ExerciseLevel.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jRadioButton1.setText("Beginner");
         jRadioButton1.addActionListener(this::jRadioButton1ActionPerformed);
 
+        ExerciseLevel.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jRadioButton2.setText("Intermediate");
 
+        ExerciseLevel.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jRadioButton3.setText("Advanced");
 
+        ExerciseLevel.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jRadioButton4.setText("High Performance");
 
@@ -182,21 +187,26 @@ public class GenerateRoutine extends javax.swing.JFrame {
 
     if (jRadioButton1.isSelected()) {
         level = "Beginner";
-    }
-
-    if (jRadioButton2.isSelected()) {
+    } else if (jRadioButton2.isSelected()) {
         level = "Intermediate";
-    }
-
-    if (jRadioButton3.isSelected()) {
+    } else if (jRadioButton3.isSelected()) {
         level = "Advanced";
-    }
-
-    if (jRadioButton4.isSelected()) {
+    } else if (jRadioButton4.isSelected()) {
         level = "High Performance";
     }
 
-    int numExercises = Integer.parseInt(jTextField1.getText());
+    if (level.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a level.");
+        return;
+    }
+
+    int numExercises;
+    try {
+        numExercises = Integer.parseInt(jTextField1.getText().trim());
+    } catch (NumberFormatException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Number of exercises must be a number.");
+        return;
+    }
 
     ExerciseDAO dao = new ExerciseDAO();
 
@@ -231,7 +241,7 @@ public class GenerateRoutine extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-    System.exit(0);
+    this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -264,6 +274,7 @@ public class GenerateRoutine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup ExerciseLevel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
