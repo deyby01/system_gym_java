@@ -74,6 +74,7 @@ public class Menu extends javax.swing.JFrame {
 
         GenerateRoutineButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
         GenerateRoutineButton.setText("Generate Routine");
+        GenerateRoutineButton.addActionListener(this::GenerateRoutineButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +219,13 @@ public class Menu extends javax.swing.JFrame {
             System.out.println("Image not found: /img/" + fileName);
         }
     }
-    
+
+    private void GenerateRoutineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateRoutineButtonActionPerformed
+        GenerateRoutine gr = new GenerateRoutine();
+        gr.setVisible(true);
+    }//GEN-LAST:event_GenerateRoutineButtonActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
