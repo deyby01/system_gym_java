@@ -79,6 +79,7 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         BeginnerOption = new javax.swing.JRadioButton();
         AdvancedOption = new javax.swing.JRadioButton();
         HighOption = new javax.swing.JRadioButton();
+        Close = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -100,7 +101,7 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel6.setText("Description: ");
 
-        SaveButton.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        SaveButton.setFont(new java.awt.Font("Liberation Sans", 3, 18)); // NOI18N
         SaveButton.setText("Save");
         SaveButton.addActionListener(this::SaveButtonActionPerformed);
 
@@ -121,6 +122,10 @@ public class CreateExerciseForm extends javax.swing.JFrame {
 
         LevelGroup.add(HighOption);
         HighOption.setText("High Performance");
+
+        Close.setFont(new java.awt.Font("Liberation Sans", 3, 18)); // NOI18N
+        Close.setText("Close");
+        Close.addActionListener(this::CloseActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,14 +157,11 @@ public class CreateExerciseForm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BeginnerOption)
                                 .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(IntermediateOption)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(AdvancedOption)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(HighOption)))))
+                                .addComponent(IntermediateOption)
+                                .addGap(34, 34, 34)
+                                .addComponent(AdvancedOption)
+                                .addGap(41, 41, 41)
+                                .addComponent(HighOption)))
                         .addGap(132, 132, 132))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,6 +172,12 @@ public class CreateExerciseForm extends javax.swing.JFrame {
                             .addComponent(DescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(419, 572, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,9 +213,11 @@ public class CreateExerciseForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(EstimatedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(190, 190, 190))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Close, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addGap(194, 194, 194))
         );
 
         pack();
@@ -272,6 +282,10 @@ public class CreateExerciseForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
 
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CloseActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -302,6 +316,7 @@ public class CreateExerciseForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton AdvancedOption;
     private javax.swing.JRadioButton BeginnerOption;
     private javax.swing.JRadioButton CardioOption;
+    private javax.swing.JButton Close;
     private javax.swing.JTextField DescriptionField;
     private javax.swing.JTextField EstimatedField;
     private javax.swing.JRadioButton HighOption;
