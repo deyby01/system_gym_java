@@ -142,8 +142,7 @@ public class Menu extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_CreateButtonActionPerformed
 
-
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         String input = JOptionPane.showInputDialog(null, "Enter the ID of the exercise to update:");
         if (input == null || input.trim().isEmpty()) return;
 
@@ -219,7 +218,7 @@ public class Menu extends javax.swing.JFrame {
             System.out.println("Image not found: /img/" + fileName);
         }
     }
-
+    
     /**
      * @param args the command line arguments
      */
