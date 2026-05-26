@@ -72,6 +72,7 @@ public class Menu extends javax.swing.JFrame {
 
         GenerateRoutineButton.setFont(new java.awt.Font("Liberation Sans", 3, 15)); // NOI18N
         GenerateRoutineButton.setText("Generate Routine");
+        GenerateRoutineButton.addActionListener(this::GenerateRoutineButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +179,11 @@ public class Menu extends javax.swing.JFrame {
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void GenerateRoutineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateRoutineButtonActionPerformed
+GenerateRoutine gr = new GenerateRoutine();
+gr.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_GenerateRoutineButtonActionPerformed
 
 
     /**
