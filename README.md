@@ -97,7 +97,15 @@ FLUSH PRIVILEGES;
 > String password = "Gym_2024!";
 > ```
 
-### 5. Load sample data (optional)
+### 5. Create the routines tables
+
+Run the migration to add persistence for generated routines:
+
+```bash
+mysql -u gym_user -p system_gym < sql/add_routines.sql
+```
+
+### 6. Load sample data (optional)
 
 To populate the database with 22 sample exercises for testing, run the fixture script:
 
@@ -114,7 +122,7 @@ source /path/to/project/sql/fixtures.sql
 This inserts exercises of all types (Strength and Cardio) across all four intensity levels.
 All entries have `last_used = 0` so they are immediately available for routine generation.
 
-### 6. Open and run in NetBeans
+### 7. Open and run in NetBeans
 
 1. In NetBeans: **File > Open Project** and select the cloned folder.
 2. Make sure the **MySQL server is running**.
@@ -137,7 +145,8 @@ MySQL is running and that the user/password from step 4 match
 system_gym/
 ├── lib/                         # MySQL Connector/J driver (.jar)
 ├── sql/
-│   └── fixtures.sql             # Sample data for testing (22 exercises)
+│   ├── fixtures.sql             # Sample data for testing (32 exercises)
+│   └── add_routines.sql         # Migration: adds routines and routine_exercises tables
 ├── src/system_gym/
 │   ├── System_gym.java          # Main class (entry point)
 │   ├── Conection.java           # MySQL connection (JDBC)

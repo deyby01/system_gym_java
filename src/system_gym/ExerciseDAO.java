@@ -191,30 +191,46 @@ public class ExerciseDAO {
     public List<Exercise> generateRoutine(String level, int numExercises) {
         List<Exercise> routine = new ArrayList<>();
         int currentWeek = java.util.Calendar.getInstance().get(java.util.Calendar.WEEK_OF_YEAR);
-        String sql = "SELECT * FROM exercises WHERE intensity_level='" + level + "' AND last_used <= " + (currentWeek - 2) + " ORDER BY RAND() LIMIT " + numExercises;
 
         try {
             conect = con_db.connect();
+
+            // First pass: exercises not used in the last 2 weeks
+            String sql = "SELECT * FROM exercises WHERE intensity_level='" + level
+                       + "' AND last_used <= " + (currentWeek - 2)
+                       + " ORDER BY RAND() LIMIT " + numExercises;
             st = conect.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String type = rs.getString("type");
-                String intensityLevel = rs.getString("intensity_level");
-                double estimatedTime = rs.getDouble("estimated_time");
-                String description = rs.getString("description");
-                int lastUsed = rs.getInt("last_used");
+                routine.add(buildExercise(rs));
+            }
 
-                Exercise e = new Exercise(id, name, type, intensityLevel, estimatedTime, description, lastUsed);
-                routine.add(e);
+            // Second pass: if still short, fill with least-recently-used exercises
+            if (routine.size() < numExercises) {
+                int remaining = numExercises - routine.size();
 
-                String updateSql = "UPDATE exercises SET last_used=" + currentWeek + " WHERE id=" + id;
+                StringBuilder excludeIds = new StringBuilder();
+                for (Exercise e : routine) {
+                    if (excludeIds.length() > 0) excludeIds.append(",");
+                    excludeIds.append(e.getId());
+                }
 
-Statement updateSt = conect.createStatement();
+                String fillSql = "SELECT * FROM exercises WHERE intensity_level='" + level + "'"
+                               + (excludeIds.length() > 0 ? " AND id NOT IN (" + excludeIds + ")" : "")
+                               + " ORDER BY last_used ASC LIMIT " + remaining;
 
-updateSt.executeUpdate(updateSql);
+                ResultSet fillRs = conect.createStatement().executeQuery(fillSql);
+                while (fillRs.next()) {
+                    routine.add(buildExercise(fillRs));
+                }
+            }
+
+            // Mark all selected exercises as used this week
+            for (Exercise e : routine) {
+                conect.createStatement().executeUpdate(
+                    "UPDATE exercises SET last_used=" + currentWeek + " WHERE id=" + e.getId()
+                );
             }
 
             con_db.disconnect();
@@ -224,6 +240,111 @@ updateSt.executeUpdate(updateSql);
         }
 
         return routine;
+    }
+
+    private Exercise buildExercise(ResultSet rs) throws Exception {
+        return new Exercise(
+            rs.getInt("id"),
+            rs.getString("name"),
+            rs.getString("type"),
+            rs.getString("intensity_level"),
+            rs.getDouble("estimated_time"),
+            rs.getString("description"),
+            rs.getInt("last_used")
+        );
+    }
+
+    /**
+     * Persists a generated routine and its exercise list to the database.
+     *
+     * @param level      The intensity level of the routine.
+     * @param exercises  The ordered list of exercises in the routine.
+     * @param totalTime  The sum of estimated times for all exercises.
+     * @return The auto-generated routine id, or -1 on failure.
+     */
+    public int saveRoutine(String level, List<Exercise> exercises, double totalTime) {
+        String sql = "INSERT INTO routines(level, total_time) VALUES('" + level + "', " + totalTime + ")";
+        try {
+            conect = con_db.connect();
+            st = conect.createStatement();
+            st.executeUpdate(sql, java.sql.Statement.RETURN_GENERATED_KEYS);
+            ResultSet keys = st.getGeneratedKeys();
+            if (!keys.next()) { con_db.disconnect(); return -1; }
+            int routineId = keys.getInt(1);
+
+            int position = 1;
+            for (Exercise e : exercises) {
+                String exSql = "INSERT INTO routine_exercises(routine_id, exercise_id, position) VALUES("
+                             + routineId + ", " + e.getId() + ", " + position + ")";
+                conect.createStatement().executeUpdate(exSql);
+                position++;
+            }
+            con_db.disconnect();
+            return routineId;
+        } catch (Exception err) {
+            System.out.println("Error saving routine: " + err);
+            return -1;
+        }
+    }
+
+    /**
+     * Retrieves all saved routines, most recent first.
+     *
+     * @return A list of Routine objects. Empty if none exist or an error occurs.
+     */
+    public List<Routine> getAllRoutines() {
+        List<Routine> routines = new ArrayList<>();
+        String sql = "SELECT * FROM routines ORDER BY created_at DESC";
+        try {
+            conect = con_db.connect();
+            st = conect.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                routines.add(new Routine(
+                    rs.getInt("id"),
+                    rs.getString("level"),
+                    rs.getDouble("total_time"),
+                    rs.getString("created_at")
+                ));
+            }
+            con_db.disconnect();
+        } catch (Exception err) {
+            System.out.println("Error fetching routines: " + err);
+        }
+        return routines;
+    }
+
+    /**
+     * Retrieves the exercises belonging to a specific routine, in order.
+     *
+     * @param routineId The id of the routine.
+     * @return An ordered list of Exercise objects for that routine.
+     */
+    public List<Exercise> getRoutineExercises(int routineId) {
+        List<Exercise> exercises = new ArrayList<>();
+        String sql = "SELECT e.* FROM exercises e "
+                   + "JOIN routine_exercises re ON e.id = re.exercise_id "
+                   + "WHERE re.routine_id = " + routineId + " ORDER BY re.position";
+        try {
+            conect = con_db.connect();
+            st = conect.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                exercises.add(new Exercise(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("type"),
+                    rs.getString("intensity_level"),
+                    rs.getDouble("estimated_time"),
+                    rs.getString("description"),
+                    rs.getInt("last_used")
+                ));
+            }
+            con_db.disconnect();
+        } catch (Exception err) {
+            System.out.println("Error fetching routine exercises: " + err);
+        }
+        return exercises;
     }
 
     /**

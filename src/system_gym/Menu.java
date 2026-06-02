@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
         SearchButton.addActionListener(this::SearchButtonActionPerformed);
         DeleteButton.addActionListener(this::DeleteButtonActionPerformed);
         ShowDetailButton.addActionListener(this::ShowDetailButtonActionPerformed);
+        ViewRoutinesButton.addActionListener(this::ViewRoutinesButtonActionPerformed);
     }
 
     /**
@@ -47,6 +48,7 @@ public class Menu extends javax.swing.JFrame {
         ShowDetailButton = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
         GenerateRoutineButton = new javax.swing.JButton();
+        ViewRoutinesButton = new javax.swing.JButton();
         LogoLabel = new javax.swing.JLabel();
         LogoGym = new javax.swing.JLabel();
 
@@ -76,6 +78,9 @@ public class Menu extends javax.swing.JFrame {
         GenerateRoutineButton.setText("Generate Routine");
         GenerateRoutineButton.addActionListener(this::GenerateRoutineButtonActionPerformed);
 
+        ViewRoutinesButton.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
+        ViewRoutinesButton.setText("View Routines");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,6 +106,11 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(UpdateButton,          javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ShowDetailButton,      javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(GenerateRoutineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            // Row 4: View Routines (full-width, spans both columns)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ViewRoutinesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,6 +142,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchButton,          javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(GenerateRoutineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                // Row 4: View Routines (full-width)
+                .addComponent(ViewRoutinesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,8 +241,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_GenerateRoutineButtonActionPerformed
 
 
-    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {
         SearchExerciseByLevelForm form = new SearchExerciseByLevelForm();
+        form.setVisible(true);
+    }
+
+    private void ViewRoutinesButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        ViewRoutinesForm form = new ViewRoutinesForm();
         form.setVisible(true);
     }
 
@@ -267,6 +285,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton SearchButton;
     private javax.swing.JButton ShowDetailButton;
     private javax.swing.JButton UpdateButton;
+    private javax.swing.JButton ViewRoutinesButton;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

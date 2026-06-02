@@ -1,7 +1,14 @@
 -- Fixture data for system_gym database.
 -- Run this script once after creating the database and table.
--- Usage (MySQL terminal): source /path/to/sql/fixtures.sql
---   or: mysql -u gym_user -p system_gym < sql/fixtures.sql
+--
+-- Linux / macOS (terminal):
+--   mysql -u gym_user -p system_gym < sql/fixtures.sql
+--
+-- Windows (cmd or PowerShell, from the project root):
+--   mysql -u gym_user -p system_gym < sql\fixtures.sql
+--
+-- Alternative on any OS (from MySQL Workbench or a MySQL session):
+--   source C:/path/to/project/sql/fixtures.sql
 --
 -- To reset last_used for testing (makes all exercises available again):
 --   UPDATE exercises SET last_used = 0;

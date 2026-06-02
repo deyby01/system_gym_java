@@ -234,6 +234,11 @@ public class GenerateRoutine extends javax.swing.JFrame {
         count++;
     }
 
+    int savedId = dao.saveRoutine(level, routine, totalTime);
+    if (savedId < 0) {
+        System.out.println("Warning: routine could not be saved to database.");
+    }
+
     javax.swing.JOptionPane.showMessageDialog(
         this,
         "Total routine time: " + totalTime + " min"
